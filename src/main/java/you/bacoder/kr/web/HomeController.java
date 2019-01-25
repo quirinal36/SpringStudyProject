@@ -1,4 +1,4 @@
-package you.bacoder.kr;
+package you.bacoder.kr.web;
 
 import java.text.DateFormat;
 import java.util.Date;
