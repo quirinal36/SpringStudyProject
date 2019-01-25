@@ -4,6 +4,6 @@
 
 <configuration>
     <typeAliases>
-    	<typeAlias alias="board" type="you.bacoder.kr.dto.Board"/>
+    	<typeAlias alias="board" type="you.bacoder.kr.vo.Board"/>
     </typeAliases>
 </configuration>
