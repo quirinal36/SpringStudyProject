@@ -36,7 +36,13 @@
 		    <artifactId>mybatis</artifactId>
 		    <version>3.5.0</version>
 		</dependency>
-		
+		<!-- https://mvnrepository.com/artifact/org.apache.ibatis/ibatis-core -->
+		<dependency>
+		    <groupId>org.apache.ibatis</groupId>
+		    <artifactId>ibatis-core</artifactId>
+		    <version>3.0</version>
+		</dependency>
+				
 		<!-- Database 를 사용하기 위해  -->
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
 		<dependency>
