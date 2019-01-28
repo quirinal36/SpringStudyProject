@@ -12,4 +12,34 @@
 		select * from Board where writer like '%${writer}%'
 	</select>
 	
+	<select id="select_one" parameterType="board" resultType="board">
+		select id, title, writer, content, wdate 
+		from Board
+		<where>
+			id=${id}
+		</where>
+	</select>
+	
+	<insert id="insert" parameterType="board">
+		insert into Board 
+		(title, writer, content, wdate)
+		values
+		('${title}', '${writer}', '${content}', NOW())
+	</insert>
+	
+	<update id="update" parameterType="board">
+		update Board
+		<set>
+			<if test="title != null">title='${title}',</if>
+			<if test="content != null">content='${content}',</if>
+		</set>
+		<where>
+			id=${id}
+		</where>
+	</update>
+	
+	<delete id="delete" parameterType="board">
+		delete from Board
+		where id = ${id}
+	</delete>
 </mapper>

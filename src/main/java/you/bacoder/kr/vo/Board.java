@@ -24,25 +24,16 @@ public class Board extends Content{
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getDate() {
+	public Date getWdate() {
 		return wdate;
 	}
-	public void setDate(Date date) {
-		this.wdate = date;
+
+	public void setWdate(Date wdate) {
+		this.wdate = wdate;
 	}
-	
+
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
-	}
-	
-	public static Board parseBoard(ResultSet rs) throws SQLException {
-		Board result = new Board();
-		result.setId(rs.getInt("id"));
-		result.setTitle(rs.getString("title"));
-		result.setContent(rs.getString("content"));
-		result.setWriter(rs.getString("writer"));
-		result.setDate(rs.getDate("wdate"));
-		return result;
 	}
 }

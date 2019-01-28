@@ -17,20 +17,17 @@ public class BoardDAO implements DataAccess<Board> {
 	
 	@Override
 	public int insert(Board input) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert(namespace +".insert", input);
 	}
 
 	@Override
 	public int update(Board input) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update(namespace + ".update", input);
 	}
 
 	@Override
 	public int delete(Board input) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete(namespace+".delete", input);
 	}
 
 	@Override
@@ -45,8 +42,7 @@ public class BoardDAO implements DataAccess<Board> {
 
 	@Override
 	public Board selectOne(Board input) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(namespace +".select_one", input);
 	}
 
 }

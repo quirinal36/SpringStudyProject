@@ -16,20 +16,17 @@ public class BoardService implements DataService<Board> {
 	
 	@Override
 	public int insert(Board input) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.insert(input);
 	}
 
 	@Override
 	public int update(Board input) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.update(input);
 	}
 
 	@Override
 	public int delete(Board input) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.delete(input);
 	}
 
 	@Override
@@ -44,8 +41,7 @@ public class BoardService implements DataService<Board> {
 
 	@Override
 	public Board selectOne(Board input) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.selectOne(input);
 	}
 
 }

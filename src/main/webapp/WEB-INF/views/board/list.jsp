@@ -11,46 +11,39 @@
 	</head>
 	<body>
 		<div class="wrap">
-		<header>
-			<div>
-				<ul>
-					<li><a href="<c:url value="/"/>">유저 리스트</a></li>
-					<li><a href="<c:url value="/board/list"/>">게시판</a></li>
-					<li><a href="<c:url value="/"/>">소개하기</a></li>
-				</ul>
-				<a href="<c:url value="/sign/login.jsp"/>">로그인</a>
-			</div>
-		</header>
-		<div class="container">
-			<form action="<c:url value="/board/list"/>">
-				<input type="text" placeholder="작성자검색" name="writer" value="${board.writer }"/>
-				<input type="submit" value="검색"/>
-				<input type="button" value="새글작성" onclick="javascript:window.location.href='/board/write'"/>
-			</form>
-			<table>
-				<thead>
-					<tr>
-						<th>번호</th>
-						<th>제목</th>
-						<th>글쓴이</th>
-						<th>날짜</th>
-					</tr>
-				</thead>
-				<tbody>
-				<c:forEach items="${list }" var="item">
-					<tr>
-						<td>${item.id}</td>
-						<td>
-							<a href="/board/detail?id=${item.id}">
-								${item.title}
-							</a>
-						</td>
-						<td>${item.writer}</td>
-						<td>${item.date}</td>
-					</tr>
-				</c:forEach>
-				</tbody>
-			</table>
+		<%@ include file="/WEB-INF/views/inc/header.jsp" %>
+			<div class="container_wrap">
+				<div class="container">
+					<form action="<c:url value="/board/list"/>">
+						<input type="text" placeholder="작성자검색" name="writer" value="${board.writer }"/>
+						<input type="submit" value="검색"/>
+						<input type="button" value="새글작성" onclick="javascript:window.location.href='/board/write'"/>
+					</form>
+					<table>
+						<thead>
+							<tr>
+								<th>번호</th>
+								<th>제목</th>
+								<th>글쓴이</th>
+								<th>날짜</th>
+							</tr>
+						</thead>
+						<tbody>
+						<c:forEach items="${list }" var="item">
+							<tr>
+								<td>${item.id}</td>
+								<td>
+									<a href="/board/detail?id=${item.id}">
+										${item.title}
+									</a>
+								</td>
+								<td>${item.writer}</td>
+								<td>${item.wdate}</td>
+							</tr>
+						</c:forEach>
+						</tbody>
+					</table>
+				</div>
 			</div>
 			<footer>
 				<p>ⓒ 회사명.</p>
