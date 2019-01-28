@@ -9,7 +9,7 @@
 	</select>
 	
 	<select id="select" parameterType="board" resultType="board">
-		select * from Board where writer like '%${title}%'
+		select * from Board where writer like '%${writer}%'
 	</select>
 	
 </mapper>

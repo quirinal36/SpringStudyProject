@@ -23,7 +23,7 @@
 		</header>
 		<div class="container">
 			<form action="<c:url value="/board/list"/>">
-				<input type="text" placeholder="작성자검색" name="writer" value="${search }"/>
+				<input type="text" placeholder="작성자검색" name="writer" value="${board.writer }"/>
 				<input type="submit" value="검색"/>
 				<input type="button" value="새글작성" onclick="javascript:window.location.href='/board/write'"/>
 			</form>
