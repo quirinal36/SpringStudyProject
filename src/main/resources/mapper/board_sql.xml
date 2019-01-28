@@ -3,7 +3,13 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="board_sql">
+	
 	<select id="select_all" resultType="board">
-		select * from Board
+		select id, title, writer, content, wdate from Board
 	</select>
+	
+	<select id="select" parameterType="board" resultType="board">
+		select * from Board where writer like '%${title}%'
+	</select>
+	
 </mapper>

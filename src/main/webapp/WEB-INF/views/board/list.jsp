@@ -15,7 +15,7 @@
 			<div>
 				<ul>
 					<li><a href="<c:url value="/"/>">유저 리스트</a></li>
-					<li><a href="<c:url value="/board/lilst"/>">게시판</a></li>
+					<li><a href="<c:url value="/board/list"/>">게시판</a></li>
 					<li><a href="<c:url value="/"/>">소개하기</a></li>
 				</ul>
 				<a href="<c:url value="/sign/login.jsp"/>">로그인</a>

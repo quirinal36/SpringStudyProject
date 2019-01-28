@@ -12,7 +12,7 @@
 	
 	<!-- Application Loggers -->
 	<logger name="you.bacoder.kr">
-		<level value="info" />
+		<level value="DEBUG" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
@@ -32,9 +32,12 @@
 		<level value="info" />
 	</logger>
 
+	<logger name="org.springframework.jdbc.core.JdbcTemplate">
+  		<level value="DEBUG" />
+	</logger>
 	<!-- Root Logger -->
 	<root>
-		<priority value="warn" />
+		<priority value="DEBUG" />
 		<appender-ref ref="console" />
 	</root>
 	

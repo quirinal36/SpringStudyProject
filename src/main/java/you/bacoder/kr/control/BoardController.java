@@ -16,10 +16,16 @@ public class BoardController extends BacoderController {
 	
 	@RequestMapping(value="/board/list", method=RequestMethod.GET)
 	public ModelAndView getBoardList(ModelAndView mv, 
-			@RequestParam(value="search", required=false)Optional<String> search) {
+			@RequestParam(value="writer", required=false)String search) {
+		
 		List<Board> list = boardService.select();
-		if(search!=null && search.isPresent()) {
-			mv.addObject("search", search.get());
+		if(search!=null && search.length()>0) {
+			Board board = new Board();
+			board.setTitle(search);
+			list = boardService.select(board);
+		}else {
+			mv.addObject("search", search);
+			list = boardService.select();
 		}
 		mv.addObject("list", list);
 		return mv;
