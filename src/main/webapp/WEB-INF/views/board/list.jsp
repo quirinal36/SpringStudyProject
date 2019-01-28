@@ -5,7 +5,7 @@
 	<head>
 	<meta charset="UTF-8">
 	<title>User List</title>
-	<link href="http://www.bacoder.kr/webpr/css/table.css" rel="stylesheet" type="text/css" media="all">
+	<link rel="stylesheet" type="text/css" media="all" href="http://www.bacoder.kr/webpr/css/table.css" >
 	<link rel="stylesheet" type="text/css" href="http://www.bacoder.kr/webpr/css/style.css" />
 	
 	</head>
