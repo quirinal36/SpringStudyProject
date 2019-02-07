@@ -17,7 +17,7 @@
 					<form action="<c:url value="/board/list"/>">
 						<input type="text" placeholder="작성자검색" name="writer" value="${board.writer }"/>
 						<input type="submit" value="검색"/>
-						<input type="button" value="새글작성" onclick="javascript:window.location.href='/board/write'"/>
+						<input type="button" value="새글작성" onclick="javascript:window.location.href='<c:url value='/board/write'/>'"/>
 					</form>
 					<table>
 						<thead>
@@ -33,7 +33,7 @@
 							<tr>
 								<td>${item.id}</td>
 								<td>
-									<a href="/board/detail?id=${item.id}">
+									<a href="<c:url value="/board/detail?id=${item.id}"/>">
 										${item.title}
 									</a>
 								</td>

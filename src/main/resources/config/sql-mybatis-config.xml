@@ -5,5 +5,6 @@
 <configuration>
     <typeAliases>
     	<typeAlias alias="board" type="you.bacoder.kr.vo.Board"/>
+    	<typeAlias alias="user" type="you.bacoder.kr.vo.UserVO"/>
     </typeAliases>
 </configuration>

@@ -1,0 +1,36 @@
+.member > p { margin-bottom: 30px; font-size: 16px; }
+.info { margin-bottom: 40px; font-size: 0; }
+.info > div { display: inline-block; width: 50%; border-top: 1px solid #6bc2ae; vertical-align: top; }
+.info dl { border-bottom: 1px solid #ddd; }
+.info dt, .info dd { display: inline-block; height: 61px; padding: 15px 10px; box-sizing: border-box; font-size: 14px; line-height: 220%; vertical-align: top; }
+.info dt { width: 25%; background: #f5f5f5; }
+.info dd { width: 75%; text-align: left; }
+.info dd input[type="text"], .info dd input[type="password"] { width: 50%; padding: 5px; vertical-align: middle; }
+
+.form1 { margin: 0 auto; }
+.form1 dt, .form1 dd { display: inline-block; vertical-align: middle; text-align: left; font-size: 14px; }
+.form1 dt { width: 30%; }
+.form1 dd { width: 70%; }
+.form1 .error { display: inline-block; margin-top: 20px; font-size: 13px; color: #F56F81; }
+.form1 input[type="text"], .form1 input[type="password"] { width: 100%; padding: 10px; box-sizing: border-box; background: #eee; }
+.form1 input[type="submit"] { width: 100%; margin-top: 20px; }
+
+/* 로그인 */
+#login form { width: 270px; }
+#login dl { font-size: 0; }
+#login dl:first-child { margin-bottom: 5px; }
+#login input[type="submit"] { width: 100%; margin: 20px 0; }
+#login a { display: inline-block; margin: 0 10px; }
+
+/* 새 비밀번호 */
+#findEdit form { width: 320px; }
+#findEdit dl { margin-top: 5px; font-size: 0; }
+#findEdit dl:first-child { margin: 0 0 14px 0; }
+#findEdit input[type="submit"] { width: 70%; }
+
+/* 회원가입 */
+#join_step2 label span { color: #6bc2ae; }
+
+/* 회원탈퇴 */
+#delete dl { width: 270px; margin: 0 auto; font-size: 0; }
+#delete input[type="submit"] { width: 270px; }
