@@ -57,7 +57,7 @@ public class UserController extends BacoderController {
 	 * @param mv
 	 * @return
 	 */
-	@RequestMapping(value="/sign/login", method=RequestMethod.GET)
+	@RequestMapping(value= {"/sign/login", "login"}, method=RequestMethod.GET)
 	public ModelAndView getLoginView(ModelAndView mv,
 			@RequestParam(value = "loginid", required = false) String loginId,
 			@RequestParam(value = "loginRedirect", required = false) String redirectUrl) {
