@@ -45,8 +45,7 @@ public class UserDAO implements DataAccess<UserVO> {
 
 	@Override
 	public UserVO selectOne(UserVO input) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(namespace+".selectOne", input);
 	}
 	
 	public UserVO login(UserVO input) {

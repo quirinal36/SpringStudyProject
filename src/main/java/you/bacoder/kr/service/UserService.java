@@ -50,8 +50,7 @@ public class UserService implements DataAccess<UserVO> {
 
 	@Override
 	public UserVO selectOne(UserVO input) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.selectOne(input);
 	}
 	
 }

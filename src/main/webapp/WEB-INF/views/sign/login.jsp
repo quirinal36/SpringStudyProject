@@ -27,7 +27,7 @@
 				<input type="submit" value="로그인" class="bt1" />
 			</form>
 			<a href="/sign/find">아이디/비밀번호 찾기</a>
-			<a href="/sign/signup">회원가입</a>
+			<a href="<c:url value="/sign/signup"/>">회원가입</a>
 		</div>
 		<!-- 컨텐츠 끝 -->
 		</div>

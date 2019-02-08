@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		<div class="wrap">
-		<%@ include file="/WEB-INF/views/inc/header.jsp" %>
+		<c:import url="/inc/header"></c:import>
 			<div class="container_wrap">
 				<div class="container">
 					<form action="<c:url value="/board/list"/>">

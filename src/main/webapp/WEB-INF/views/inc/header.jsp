@@ -30,6 +30,7 @@ function logoutClick(){
 		</sec:authorize>
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_USER','ROLE_CHEF')">
 			<a href="javascript:logoutClick();">로그아웃</a>
+			<span>${user.username }님 </span>
 		</sec:authorize>
 	</div>
 </header>

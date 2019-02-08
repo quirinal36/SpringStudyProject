@@ -24,7 +24,7 @@ public class IndexController extends BacoderController {
 	
 	@RequestMapping(value= "/inc/header", method=RequestMethod.GET)
 	public ModelAndView getHeaderView(ModelAndView mv) {
-		
+		mv.addObject("user", getUser());
 		mv.setViewName("/inc/header");
 		return mv;
 	}
