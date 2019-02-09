@@ -21,7 +21,7 @@
 								value="${loginpwd }"/></dd>
 				</dl>
 				<c:if test="${not empty securityexceptionmsg }">
-					<span id="error_msg" class="error" >${securityexceptionmsg}</span>
+					<span id="error_msg" class="error">${securityexceptionmsg}</span>
 				</c:if>
 				<input type="hidden" name="loginRedirect" value="${loginRedirect }"/>
 				<input type="submit" value="로그인" class="bt1" />
