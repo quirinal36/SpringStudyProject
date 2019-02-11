@@ -5,12 +5,12 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Spring Framework 를 배워보자</title>
-<link rel="stylesheet" type="text/css" href="http://www.bacoder.kr/webpr/css/style.css" />
-<link rel="stylesheet" type="text/css" href="http://www.bacoder.kr/webpr/css/table.css" />
-</head>
+	<head>
+	<meta charset="UTF-8">
+	<title>Spring Framework 를 배워보자</title>
+	<link rel="stylesheet" type="text/css" href="http://www.bacoder.kr/webpr/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="http://www.bacoder.kr/webpr/css/table.css" />
+	</head>
 <body>
 	<div class="wrap">
 		<c:import url="/inc/header"></c:import>
