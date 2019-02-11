@@ -28,8 +28,6 @@ public class BoardController extends BacoderController {
 	@RequestMapping(value= {"/board/list","/board"}, method=RequestMethod.GET)
 	public ModelAndView getBoardList(ModelAndView mv, 
 			@RequestParam(value="writer", required=false)String writer) {
-		Principal principal;
-		
 		List<Board> list;
 		if(writer!=null && writer.length()>0) {
 			Board board = new Board();
@@ -71,11 +69,14 @@ public class BoardController extends BacoderController {
 			HttpServletRequest request) throws IOException {
 		int result = boardService.insert(board);
 		
-		JSONObject json = new JSONObject();
-		json.put("result", result);
-		response.getWriter().append(json.toString());
+		if(result == 1) {
+			// 글 작성에 성공
+			mv.setViewName("redirect:/board");
+		}else {
+			// 글 작성에 실패
+			mv.setViewName("redirect:/board/write");
+		}
 		
-		mv.setViewName("redirect:/board");
 		return mv;
 	}
 	/**
