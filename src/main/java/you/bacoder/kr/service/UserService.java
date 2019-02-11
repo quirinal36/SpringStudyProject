@@ -27,7 +27,7 @@ public class UserService implements DataAccess<UserVO> {
 
 	@Override
 	public int update(UserVO input) {
-		return 0;
+		return dao.update(input);
 	}
 
 	@Override
@@ -38,8 +38,7 @@ public class UserService implements DataAccess<UserVO> {
 
 	@Override
 	public List<UserVO> select() {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.select();
 	}
 
 	@Override

@@ -19,11 +19,6 @@ function logoutClick(){
 		}
 	});
 }
-
-
-
-
-
 </script>
 <header>
 	<div>
@@ -31,7 +26,7 @@ function logoutClick(){
 			<li><a href="<c:url value="/"/>">첫화면</a></li>
 			<li><a href="<c:url value="/board/list"/>">게시판</a></li>
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
-				<li><a href="<c:url value="/admin"/>">관리자</a></li>
+				<li><a href="<c:url value="/admin/list"/>">관리자</a></li>
 			</sec:authorize>
 		</ul>
 		<sec:authorize access="isAnonymous()">

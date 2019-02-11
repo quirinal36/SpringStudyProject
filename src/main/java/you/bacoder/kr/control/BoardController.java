@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import you.bacoder.kr.vo.Board;
+import you.bacoder.kr.vo.UserVO;
 
 @Controller
 public class BoardController extends BacoderController {
@@ -27,11 +28,11 @@ public class BoardController extends BacoderController {
 	 */
 	@RequestMapping(value= {"/board/list","/board"}, method=RequestMethod.GET)
 	public ModelAndView getBoardList(ModelAndView mv, 
-			@RequestParam(value="writer", required=false)String writer) {
+			@RequestParam(value="search", required=false)String search) {
 		List<Board> list;
-		if(writer!=null && writer.length()>0) {
+		if(search!=null && search.length()>0) {
 			Board board = new Board();
-			board.setWriter(writer);
+			board.setSearch(search);
 			mv.addObject("board", board);
 			list = boardService.select(board);
 		}else {
@@ -51,6 +52,8 @@ public class BoardController extends BacoderController {
 	 */
 	@RequestMapping(value="/board/write", method=RequestMethod.GET)
 	public ModelAndView getWriteView(ModelAndView mv) {
+		UserVO user = getUser();
+		mv.addObject("user", user);
 		mv.setViewName("/board/write");
 		return mv;
 	}
@@ -67,6 +70,8 @@ public class BoardController extends BacoderController {
 	public ModelAndView writeBoard (ModelAndView mv, 
 			Board board, HttpServletResponse response,
 			HttpServletRequest request) throws IOException {
+		logger.info(board.toString());
+		
 		int result = boardService.insert(board);
 		
 		if(result == 1) {

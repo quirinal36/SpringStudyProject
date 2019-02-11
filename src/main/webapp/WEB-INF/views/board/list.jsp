@@ -48,7 +48,7 @@
 										${item.title}
 									</a>
 								</td>
-								<td>${item.writer}</td>
+								<td>${item.username}</td>
 								<td>${item.wdate}</td>
 							</tr>
 						</c:forEach>

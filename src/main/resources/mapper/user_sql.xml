@@ -3,6 +3,9 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="user_sql">
+	<select id="select_all" resultType="user">
+		SELECT id, login, user_phon, username, sign_up_date, birth, user_role from users;
+	</select>
 	<insert id="insert" parameterType="user">
 	INSERT INTO users 
 	(
@@ -50,4 +53,14 @@
 			and usr.user_role = roles.id
 		</where>
 	</select>
+	
+	<update id="update" parameterType="user" >
+		UPDATE users
+		<set>
+			user_role = ${user_role}
+		</set>
+		<where>
+			id = ${id}
+		</where>
+	</update>
 </mapper>

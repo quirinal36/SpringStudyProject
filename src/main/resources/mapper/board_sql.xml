@@ -5,18 +5,48 @@
 <mapper namespace="board_sql">
 	
 	<select id="select_all" resultType="board">
-		select id, title, writer, content, wdate from Board
+		select 
+			board.id, 
+			board.title, 
+			board.writer, 
+			board.content, 
+			board.wdate,
+			user.username AS username
+		from Board board, users user 
+		<where>
+			board.writer = user.id
+		</where>
 	</select>
 	
 	<select id="select" parameterType="board" resultType="board">
-		select * from Board where writer like '%${writer}%'
+		select 
+			board.id, 
+			board.title, 
+			board.writer, 
+			board.content, 
+			board.wdate,
+			user.username AS username
+		from Board board, users user 
+		<where>
+			board.writer = user.id
+			and
+			board.writer like '%${search}%'
+			or
+			board.title like '%${search}%'
+		</where>
 	</select>
 	
 	<select id="select_one" parameterType="board" resultType="board">
-		select id, title, writer, content, wdate 
-		from Board
+		select 
+			board.id, 
+			board.title, 
+			board.writer, 
+			board.content, 
+			board.wdate,
+			user.username AS username
+		from Board board, users user
 		<where>
-			id=${id}
+			board.id=${id}
 		</where>
 	</select>
 	

@@ -31,7 +31,8 @@
 									<input name="title" placeholder="제목을 입력해 주세요."/>
 								</th>
 								<th>
-									<input name="writer" placeholder="작성자">
+									<input name="" placeholder="작성자" value="${user.username }" readonly>
+									<input type="hidden" name="writer" value="${user.id}" /> 
 								</th>
 							</tr>
 						</thead>

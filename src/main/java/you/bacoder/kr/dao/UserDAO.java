@@ -21,8 +21,7 @@ public class UserDAO implements DataAccess<UserVO> {
 
 	@Override
 	public int update(UserVO input) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update(namespace +".update", input);
 	}
 
 	@Override
@@ -33,8 +32,7 @@ public class UserDAO implements DataAccess<UserVO> {
 
 	@Override
 	public List<UserVO> select() {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList(namespace +".select_all");
 	}
 
 	@Override
