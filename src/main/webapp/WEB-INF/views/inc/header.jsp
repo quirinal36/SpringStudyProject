@@ -5,6 +5,12 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <script src="<c:url value="/resources/js/sweetalert2.all.min.js"><c:param name="dt" value="${nowDate }"/></c:url>"></script>
 <script type="text/javascript">
+const toast = Swal.mixin({
+	  toast: true,
+	  position: 'top-end',
+	  showConfirmButton: false,
+	  timer: 3000
+	});
 function logoutClick(){
 	swal({
 		title : "로그아웃",
