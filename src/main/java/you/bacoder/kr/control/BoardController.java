@@ -1,16 +1,14 @@
 package you.bacoder.kr.control;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
-import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.ibatis.annotations.Param;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,21 +25,23 @@ public class BoardController extends BacoderController {
 	 * @param writer
 	 * @return
 	 */
-	@RequestMapping(value="/board/list", method=RequestMethod.GET)
+	@RequestMapping(value= {"/board/list","/board"}, method=RequestMethod.GET)
 	public ModelAndView getBoardList(ModelAndView mv, 
 			@RequestParam(value="writer", required=false)String writer) {
+		Principal principal;
 		
-		List<Board> list = boardService.select();
+		List<Board> list;
 		if(writer!=null && writer.length()>0) {
 			Board board = new Board();
 			board.setWriter(writer);
 			mv.addObject("board", board);
 			list = boardService.select(board);
 		}else {
-			
 			list = boardService.select();
 		}
+		
 		mv.addObject("list", list);
+		mv.setViewName("/board/list");
 		return mv;
 	}
 	
@@ -65,14 +65,18 @@ public class BoardController extends BacoderController {
 	 * @param request
 	 * @throws IOException
 	 */
-	@RequestMapping(value="/board/insertBoard", method=RequestMethod.GET)
-	public void writeBoard (Board board, HttpServletResponse response,
+	@RequestMapping(value="/board/insertBoard", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView writeBoard (ModelAndView mv, 
+			Board board, HttpServletResponse response,
 			HttpServletRequest request) throws IOException {
 		int result = boardService.insert(board);
 		
 		JSONObject json = new JSONObject();
 		json.put("result", result);
 		response.getWriter().append(json.toString());
+		
+		mv.setViewName("redirect:/board");
+		return mv;
 	}
 	/**
 	 * 게시판 글 수정하기 
