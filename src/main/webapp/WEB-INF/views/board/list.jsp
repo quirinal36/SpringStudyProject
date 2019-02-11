@@ -26,8 +26,12 @@
 					<form action="<c:url value="/board/list"/>">
 						<input type="text" placeholder="작성자검색" name="writer" value="${board.writer }"/>
 						<input type="submit" value="검색"/>
-						<input type="button" value="새글작성" onclick="javascript:window.location.href='<c:url value='/board/write'/>'"/>
-						
+						<sec:authorize access="isAuthenticated()">
+							<input type="button" value="새글작성" onclick="javascript:window.location.href='<c:url value='/board/write'/>'"/>
+						</sec:authorize>
+						<sec:authorize access="isAnonymous()">
+							글을 작성하시려면 로그인해주세요
+						</sec:authorize>
 						<span style="float:right;">총<c:out value="${fn:length(list) }"/>개의 게시글</span>
 					</form>
 					<table>
