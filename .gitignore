@@ -3,3 +3,4 @@ target/classes
 target/m2e-wtp/web-resources/META-INF/maven/you.bacoder/kr/pom.xml
 target/test-classes/log4j.xml
 target/m2e-wtp/web-resources/META-INF/maven/you.bacoder/kr/pom.properties
+src/main/resources/db.properties
