@@ -12,6 +12,7 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
+	
 	<title>게시판</title>
 	<link rel="stylesheet" type="text/css" media="all" href="http://www.bacoder.kr/webpr/css/table.css" >
 	<link rel="stylesheet" type="text/css" href="http://www.bacoder.kr/webpr/css/style.css" />
