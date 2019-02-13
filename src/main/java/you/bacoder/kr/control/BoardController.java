@@ -28,16 +28,24 @@ public class BoardController extends BacoderController {
 	 */
 	@RequestMapping(value= {"/board/list","/board"}, method=RequestMethod.GET)
 	public ModelAndView getBoardList(ModelAndView mv, 
-			@RequestParam(value="search", required=false)String search) {
-		List<Board> list;
-		if(search!=null && search.length()>0) {
+			@RequestParam(value="search", required=false)String search,
+			 @RequestParam(value="page", required=false)int pageNum
+			 ) {
+		logger.info("pageNum : " + pageNum);
+		
+		
+		List<Board> list = boardService.select();
+		if(search!=null && search.length()>0 || pageNum > 0) {
 			Board board = new Board();
+			board.setTotal(list.size());
 			board.setSearch(search);
 			mv.addObject("board", board);
+			board.setPageNum(pageNum);
+			list.clear();
 			list = boardService.select(board);
-		}else {
-			list = boardService.select();
+			logger.info(board.toString());
 		}
+		
 		
 		mv.addObject("list", list);
 		mv.setViewName("/board/list");

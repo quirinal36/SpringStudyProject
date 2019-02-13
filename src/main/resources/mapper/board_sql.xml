@@ -29,10 +29,13 @@
 		from Board board, users user 
 		<where>
 			board.writer = user.id
+			<if test="search != null">
 			and
 			board.writer like '%${search}%'
 			or
 			board.title like '%${search}%'
+			</if>
+			limit ${from}, ${to}
 		</where>
 	</select>
 	

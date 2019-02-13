@@ -21,15 +21,15 @@
 	</logger>
 	
 	<logger name="org.springframework.beans">
-		<level value="DEBUG" />
+		<level value="info" />
 	</logger>
 	
 	<logger name="org.springframework.context">
-		<level value="DEBUG" />
+		<level value="info" />
 	</logger>
 
 	<logger name="org.springframework.web">
-		<level value="DEBUG" />
+		<level value="info" />
 	</logger>
 
 	<logger name="org.springframework.jdbc.core.JdbcTemplate">
