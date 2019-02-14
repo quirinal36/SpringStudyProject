@@ -1,0 +1,9 @@
+.fc-white { color:#fff !important; }
+.fc-black { color:#000 !important; }
+.fc-blue { color:#00f !important; }
+
+/* board-list-page */
+.board-list-page { padding:20px 0; line-height:100%; text-align:center; }
+.board-list-page > a { display:inline-block; margin:0 5px; text-decoration:none; color:#000; vertical-align:middle; }
+.board-list-page-num-on { font-weight:bold; }
+.board-list-page-num:hover { text-decoration:underline; }

@@ -50,6 +50,7 @@
 		from Board board, users user
 		<where>
 			board.id=${id}
+			and board.writer = user.id
 		</where>
 	</select>
 	
