@@ -3,6 +3,7 @@ package you.bacoder.kr.control;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,23 +30,25 @@ public class BoardController extends BacoderController {
 	@RequestMapping(value= {"/board/list","/board"}, method=RequestMethod.GET)
 	public ModelAndView getBoardList(ModelAndView mv, 
 			@RequestParam(value="search", required=false)String search,
-			 @RequestParam(value="page", required=false)int pageNum
+			 @RequestParam(value="page", required=false)Optional<Integer> pageNum
 			 ) {
 		logger.info("pageNum : " + pageNum);
 		
-		
 		List<Board> list = boardService.select();
-		if(search!=null && search.length()>0 || pageNum > 0) {
+		if(list.size() > 0) {
 			Board board = new Board();
 			board.setTotal(list.size());
 			board.setSearch(search);
 			mv.addObject("board", board);
-			board.setPageNum(pageNum);
+			if(pageNum.isPresent()) {
+				board.setPageNum(pageNum.get());
+			}else {
+				board.setPageNum(1);
+			}
 			list.clear();
 			list = boardService.select(board);
 			logger.info(board.toString());
 		}
-		
 		
 		mv.addObject("list", list);
 		mv.setViewName("/board/list");
