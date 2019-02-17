@@ -20,7 +20,7 @@ public class Board{
 	private int from;
 	private int to;
 	private int total;
-	
+	private String photoUrl;
 	
 	public Board() {
 	}
@@ -82,9 +82,6 @@ public class Board{
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
-	
-	
 	public int getPageNum() {
 		return pageNum;
 	}
@@ -97,8 +94,6 @@ public class Board{
 			this.to=total;
 		}
 	}
-
-	
 	public int getFrom() {
 		return from;
 	}
@@ -114,8 +109,6 @@ public class Board{
 	public void setTo(int to) {
 		this.to = to;
 	}
-	
-	
 
 	public int getTotal() {
 		return total;
@@ -124,6 +117,14 @@ public class Board{
 	public void setTotal(int total) {
 		this.total = total;
 		
+	}
+	
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
 	}
 
 	@Override

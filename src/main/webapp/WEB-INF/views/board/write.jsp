@@ -16,6 +16,10 @@
 			$("form").submit();
 		}
 	}
+	function openFileUpload(){
+		var child = window.open("/photo_upload",
+				"mywindow","menubar=1,resizable=1,width=380,height=250");
+	}
 	</script>
 </head>
 <body>
@@ -37,6 +41,12 @@
 							</tr>
 						</thead>
 						<tbody>
+							<tr>
+								<td>사진업로드</td>
+								<td>
+									<input type="button" onclick="openFileUpload();" value="사진올리기"/>	
+									<input type="hidden" id="targetUpload" name="photoUrl"/>							
+								</td>
 							<tr>
 								<td colspan="2">
 									<textarea rows="20" cols="100" name="content" placeholder="내용입력"></textarea>

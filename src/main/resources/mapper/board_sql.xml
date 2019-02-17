@@ -11,7 +11,8 @@
 			board.writer, 
 			board.content, 
 			board.wdate,
-			user.username AS username
+			user.username AS username,
+			board.photoUrl
 		from Board board, users user 
 		<where>
 			board.writer = user.id
@@ -25,7 +26,8 @@
 			board.writer, 
 			board.content, 
 			board.wdate,
-			user.username AS username
+			user.username AS username,
+			board.photoUrl
 		from Board board, users user 
 		<where>
 			board.writer = user.id
@@ -35,6 +37,7 @@
 			or
 			board.title like '%${search}%'
 			</if>
+			order by board.id desc
 			limit ${from}, ${to}
 		</where>
 	</select>
@@ -46,7 +49,8 @@
 			board.writer, 
 			board.content, 
 			board.wdate,
-			user.username AS username
+			user.username AS username,
+			board.photoUrl
 		from Board board, users user
 		<where>
 			board.id=${id}
@@ -56,9 +60,9 @@
 	
 	<insert id="insert" parameterType="board">
 		insert into Board 
-		(title, writer, content, wdate)
+		(title, writer, content, wdate, photoUrl)
 		values
-		('${title}', '${writer}', '${content}', NOW())
+		('${title}', '${writer}', '${content}', NOW(), '${photoUrl}')
 	</insert>
 	
 	<update id="update" parameterType="board">

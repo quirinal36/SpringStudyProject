@@ -37,13 +37,17 @@
 							<tr>
 								<th>작성일: </th><th>${board.wdate }</th>
 							</tr>
-							
 						</thead>
 						<tbody>
 							<tr><td colspan="2">내용</td></tr>
 							<tr>
 								<td colspan="2">
 								${board.content }
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+								<img src="<c:url value="${board.photoUrl }"/>"/>
 								</td>
 							</tr>
 						</tbody>
