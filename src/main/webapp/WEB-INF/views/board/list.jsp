@@ -16,6 +16,7 @@
 	<title>게시판</title>
 	<link rel="stylesheet" type="text/css" media="all" href="http://www.bacoder.kr/webpr/css/table.css" >
 	<link rel="stylesheet" type="text/css" href="http://www.bacoder.kr/webpr/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/board.css"/>" />
 	
 	</head>
 	<body>
@@ -58,9 +59,11 @@
 						</c:forEach>
 						</tbody>
 					</table>
-					<c:if test="${fn:length(list) > 10}">
-						다음페이지
-					</c:if>
+					
+					<div class="board-list-page">
+						<a href="<c:url value="/board/list?page=1"/>" class="fc-blue board-list-page-num-on">1</a>
+						<a href="<c:url value="/board/list?page=2"/>" class="fc-blue board-list-page-num">2</a>
+					</div>
 
 					<c:set var="number" value="7"/>
 					<br/>
