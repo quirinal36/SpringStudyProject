@@ -59,6 +59,7 @@
 								<td>
 									<input type="button" onclick="openFileUpload('${baseUrl}');" value="사진올리기"/>	
 									<input type="hidden" id="targetUpload" name="photoUrl"/>
+									<img src="" id="temp_src" width="300"/>
 								</td>
 							<tr>
 								<td colspan="2">

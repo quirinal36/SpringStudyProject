@@ -32,7 +32,7 @@
 								<th>제목: </th><th>${board.title }</th>
 							</tr>
 							<tr>
-								<th>글쓴이: </th><th>${board.writer }</th>
+								<th>글쓴이: </th><th>${board.username }</th>
 							</tr>
 							<tr>
 								<th>작성일: </th><th>${board.wdate }</th>

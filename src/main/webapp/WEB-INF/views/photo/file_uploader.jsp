@@ -10,6 +10,12 @@
 <%@page import="java.io.File"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+<c:set var="servername" value="${pageContext.request.serverName}"></c:set>
+<c:set var="serverport" value="${pageContext.request.serverPort}"></c:set>
+
+
 <c:choose>
 	<c:when test="${isBiggerThanMax eq true}">
 		<script>alert("업로드 용량(총 10Mytes)을 초과하였습니다.");history.back();</script>
@@ -32,6 +38,7 @@
 	    
 	    try{
 	    	window.opener.$("#targetUpload").val(dir);
+	    	window.opener.$("#temp_src").attr("src", "${servername}:${serverport}"+dir);
             // window.opener.$("#representImg").val(fname);
             // window.opener.$("#img_uploaded").attr("src", "<c:url value='/resources/upload/"+fname+"'/>");
 	    	// window.close();

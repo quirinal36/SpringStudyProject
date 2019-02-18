@@ -48,7 +48,7 @@ public class BoardController extends BacoderController {
 			
 			list.clear();
 			list = boardService.select(board);
-			
+			mv.addObject("listsize", list.size());
 			mv.addObject("board", board);
 		}
 		mv.addObject("list", list);

@@ -66,17 +66,6 @@
 						</c:forEach>
 					</div>
 
-					<c:set var="number" value="7"/>
-					<br/>
-					<c:out value="number : ${number }"/>
-					<br/>
-					<c:choose>
-						<c:when test="${number eq 1 }">number eq 1</c:when>
-						<c:when test="${number gt 1 and number lt 4}">1&lt;number&lt;4</c:when>
-						<c:when test="${number ge 4 and number le 6}">4&le;number&le;6</c:when>
-						<c:when test="${number gt 6 and number lt 10}">6&lt;number&lt;10</c:when>
-						<c:otherwise>다른 모든경우</c:otherwise>
-					</c:choose>
 				</div>
 			</div>
 			<footer>

@@ -25,7 +25,7 @@
 					<table>
 						<thead>
 							<tr>
-								<th>글쓴이: </th><th>${board.writer }</th>
+								<th>글쓴이: </th><th>${board.username }</th>
 							</tr>
 							<tr>
 								<th>제목: </th><th><input name="title" placeholder="제목을 입력해 주세요." value="${board.title }"/></th>
