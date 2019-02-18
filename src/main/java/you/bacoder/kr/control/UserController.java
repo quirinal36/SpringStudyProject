@@ -70,9 +70,30 @@ public class UserController extends BacoderController {
 		mv.setViewName("/sign/login");
 		return mv;
 	}
-	
+
+	@RequestMapping(value= {"/sign/detail"}, method= {RequestMethod.GET})
+	public ModelAndView getDetailView(ModelAndView mv) {
+		UserVO user = getUser();
+		
+		mv.addObject("user", user);
+		mv.setViewName("/sign/detail");
+		return mv;
+	}
 	@RequestMapping(value= {"/sign/update"}, method= {RequestMethod.GET})
 	public ModelAndView getUpdateView(ModelAndView mv) {
+		UserVO user = getUser();
+		mv.addObject("user", user);
+		mv.setViewName("/sign/update");
+		return mv;
+	}
+	@RequestMapping(value= {"/sign/update/save"}, method= {RequestMethod.POST})
+	public ModelAndView saveUpdate(ModelAndView mv, UserVO updateUser) {
+		UserVO user = getUser();
+		if(user.getId() > 0) {
+			updateUser.setId(user.getId());
+			int result = userService.update(updateUser);
+		}
+		mv.setViewName("redirect:/sign/detail");
 		return mv;
 	}
 }

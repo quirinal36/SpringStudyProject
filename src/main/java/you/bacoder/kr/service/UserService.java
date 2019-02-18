@@ -27,6 +27,9 @@ public class UserService implements DataService<UserVO> {
 
 	@Override
 	public int update(UserVO input) {
+		if(input.getPassword() !=null && input.getPassword().length()>0) {
+			input.setPassword(passwordEncoder.encode(input.getPassword()));
+		}
 		return dao.update(input);
 	}
 

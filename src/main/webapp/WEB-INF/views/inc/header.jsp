@@ -41,7 +41,7 @@ function logoutClick(){
 		</sec:authorize>
 		<sec:authorize access="isAuthenticated()">
 			<a href="javascript:logoutClick();">로그아웃</a>
-			<span>${user.username }님 </span>
+			<span><a href="<c:url value="/sign/detail"/>">${user.username }님</a> </span>
 		</sec:authorize>
 	</div>
 </header>

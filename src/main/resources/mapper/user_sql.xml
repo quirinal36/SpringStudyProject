@@ -57,7 +57,15 @@
 	<update id="update" parameterType="user" >
 		UPDATE users
 		<set>
-			user_role = ${user_role}
+			<choose>
+				<when test="username != null and username!= ''">
+				username = '${username}',
+				password = '${password}'
+				</when>
+				<otherwise>
+				user_role = ${user_role}
+				</otherwise>
+			</choose>
 		</set>
 		<where>
 			id = ${id}
