@@ -25,7 +25,7 @@
 			<div class="container_wrap">
 				<div class="container">
 					<form action="<c:url value="/board/list"/>">
-						<input type="text" placeholder="작성자/제목 검색" name="writer" value="${board.title }"/>
+						<input type="text" placeholder="작성자/제목 검색" name="search" value="${board.title }"/>
 						<input type="submit" value="검색"/>
 						<sec:authorize access="isAuthenticated()">
 							<input type="button" value="새글작성" onclick="javascript:window.location.href='<c:url value='/board/write'/>'"/>
