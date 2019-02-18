@@ -11,7 +11,7 @@ import you.bacoder.kr.dao.UserDAO;
 import you.bacoder.kr.vo.UserVO;
 
 @Component("userService")
-public class UserService implements DataAccess<UserVO> {
+public class UserService implements DataService<UserVO> {
 	@Autowired
 	private UserDAO dao;
 	
@@ -50,6 +50,11 @@ public class UserService implements DataAccess<UserVO> {
 	@Override
 	public UserVO selectOne(UserVO input) {
 		return dao.selectOne(input);
+	}
+
+	@Override
+	public int count(UserVO input) {
+		return 0;
 	}
 	
 }

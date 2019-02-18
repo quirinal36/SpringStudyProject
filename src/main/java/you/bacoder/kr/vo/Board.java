@@ -15,6 +15,7 @@ public class Board extends Paging{
 	private int writer;
 	private String username;
 	private String photoUrl;
+	private int orderById;
 	
 	public Board() {}
 	
@@ -86,6 +87,14 @@ public class Board extends Paging{
 
 	public void setPhotoUrl(String photoUrl) {
 		this.photoUrl = photoUrl;
+	}
+	
+	public int getOrderById() {
+		return orderById;
+	}
+
+	public void setOrderById(int orderById) {
+		this.orderById = orderById;
 	}
 
 	@Override

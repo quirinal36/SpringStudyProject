@@ -53,4 +53,8 @@ public class UserDAO implements DataAccess<UserVO> {
 			return null;
 		}
 	}
+	@Override
+	public int count(UserVO input) {
+		return sqlSession.selectOne(namespace +".count", input);
+	}
 }

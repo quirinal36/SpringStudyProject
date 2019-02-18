@@ -45,4 +45,9 @@ public class BoardDAO implements DataAccess<Board> {
 		return sqlSession.selectOne(namespace +".select_one", input);
 	}
 
+	@Override
+	public int count(Board input) {
+		return sqlSession.selectOne(namespace +".count", input);
+	}
+
 }

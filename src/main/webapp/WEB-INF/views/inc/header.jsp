@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <script src="<c:url value="/resources/js/sweetalert2.all.min.js"><c:param name="dt" value="${nowDate }"/></c:url>"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/javascript">
 const toast = Swal.mixin({
 	  toast: true,

@@ -15,4 +15,6 @@ public interface DataAccess<T> {
 	public List<T> select(T input);
 	// 특정 1건 조회
 	public T selectOne(T input);
+	// 조건 조회 총 갯수 구하기
+	public int count(T input);
 }

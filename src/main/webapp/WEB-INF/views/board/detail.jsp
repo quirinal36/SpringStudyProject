@@ -52,8 +52,10 @@
 							</tr>
 						</tbody>
 					</table>
-					<input type="button" value="수정" onclick="javascript:moveUpdatePage('${updateDir}','${board.id}')">
-					<input type="button" value="삭제" onclick="javascript:deleteBoard('${deleteDir}','${board.id}')">
+					<c:if test="${user.id == board.writer }">
+						<input type="button" value="수정" onclick="javascript:moveUpdatePage('${updateDir}','${board.id}')">
+						<input type="button" value="삭제" onclick="javascript:deleteBoard('${deleteDir}','${board.id}')">
+					</c:if>
 				</div>
 			</div>
 		</div>

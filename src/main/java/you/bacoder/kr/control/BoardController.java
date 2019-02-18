@@ -28,29 +28,29 @@ public class BoardController extends BacoderController {
 	@RequestMapping(value= {"/board/list","/board"}, method=RequestMethod.GET)
 	public ModelAndView getBoardList(ModelAndView mv, 
 			@RequestParam(value="search", required=false)String search,
-			 @RequestParam(value="page", required=false)Optional<Integer> pageNum
-			 ) {
-		List<Board> list = boardService.select();
+			@RequestParam(value="page", required=false)Optional<Integer> pageNum,
+			@RequestParam(value="orderById", required=false)Optional<Integer> orderById ) {
+		List<Board> list;
 		
-		if(list.size() > 0) {
-			Board board;
-			if(pageNum.isPresent()) {
-				board = new Board(list.size(), pageNum.get());	
-			}else {
-				board = new Board(list.size(), 1);
-			}
-			
-			board.setSearch(search);
-			mv.addObject("board", board);
-			mv.addObject("pageNum", board.getPageNo());
-			
-			logger.info(board.toString());
-			
-			list.clear();
-			list = boardService.select(board);
-			mv.addObject("listsize", list.size());
-			mv.addObject("board", board);
+		Board board;
+		if(pageNum.isPresent()) {
+			board = new Board(0, pageNum.get());	
+		}else {
+			board = new Board(0, 1);
 		}
+		if(orderById.isPresent()) {
+			board.setOrderById(orderById.get());
+		}
+		
+		board.setSearch(search);
+		mv.addObject("pageNum", board.getPageNo());
+		
+		board.setTotalCount(boardService.count(board));
+		
+		logger.info(board.toString());
+		
+		list = boardService.select(board);
+		mv.addObject("board", board);
 		mv.addObject("list", list);
 		mv.setViewName("/board/list");
 		return mv;
@@ -136,7 +136,13 @@ public class BoardController extends BacoderController {
 	@RequestMapping(value="/board/detail", method=RequestMethod.GET)
 	public ModelAndView getDetailView(ModelAndView mv, @RequestParam(value="id")Integer id,
 			HttpServletRequest request) {
+		UserVO user = getUser();
+		if(user.getId() > 0) {
+			mv.addObject("user", user);
+		}
+		
 		Board board = boardService.selectOne(new Board(id));
+		
 		final String deleteDir = new StringBuilder()
 				.append(getWebappDir(request))
 				.append("/")

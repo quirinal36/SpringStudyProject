@@ -44,4 +44,9 @@ public class BoardService implements DataService<Board> {
 		return dao.selectOne(input);
 	}
 
+	@Override
+	public int count(Board input) {
+		return dao.count(input);
+	}
+
 }

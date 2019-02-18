@@ -18,7 +18,19 @@
 			board.writer = user.id
 		</where>
 	</select>
-	
+	<select id="count" parameterType="board" resultType="java.lang.Integer">
+		select 
+			count(*)
+		from Board board left join users user on board.writer = user.id
+		<where>
+			<if test="search != null and search != ''">
+				and
+				user.username like '%${search}%'
+				or
+				board.title like '%${search}%'
+			</if>
+		</where>
+	</select>
 	<select id="select" parameterType="board" resultType="board">
 		select 
 			board.id, 
@@ -28,16 +40,22 @@
 			board.wdate,
 			user.username AS username,
 			board.photoUrl
-		from Board board, users user 
+		from Board board left join users user on board.writer = user.id
 		<where>
-			board.writer = user.id
-			<if test="search != null">
-			and
-			board.writer like '%${search}%'
-			or
-			board.title like '%${search}%'
+			<if test="search != null and search != ''">
+				and
+				user.username like '%${search}%'
+				or
+				board.title like '%${search}%'
 			</if>
-			order by board.id desc
+			<choose>
+				<when test="orderById == 0">
+				order by board.id desc
+				</when>
+				<otherwise>
+				order by board.id asc
+				</otherwise>
+			</choose> 
 			limit ${from}, ${to-from}
 		</where>
 	</select>
