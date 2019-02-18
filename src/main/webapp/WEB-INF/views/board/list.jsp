@@ -25,7 +25,7 @@
 			<div class="container_wrap">
 				<div class="container">
 					<form action="<c:url value="/board/list"/>">
-						<input type="text" placeholder="작성자검색" name="writer" value="${board.writer }"/>
+						<input type="text" placeholder="작성자/제목 검색" name="writer" value="${board.title }"/>
 						<input type="submit" value="검색"/>
 						<sec:authorize access="isAuthenticated()">
 							<input type="button" value="새글작성" onclick="javascript:window.location.href='<c:url value='/board/write'/>'"/>
@@ -33,7 +33,7 @@
 						<sec:authorize access="isAnonymous()">
 							글을 작성하시려면 로그인해주세요
 						</sec:authorize>
-						<span style="float:right;">총<c:out value="${fn:length(list) }"/>개의 게시글</span>
+						<span style="float:right;">총<c:out value="${board.totalCount }"/>개의 게시글</span>
 					</form>
 					<table>
 						<thead>
@@ -61,8 +61,9 @@
 					</table>
 					
 					<div class="board-list-page">
-						<a href="<c:url value="/board/list?page=1"/>" class="fc-blue board-list-page-num-on">1</a>
-						<a href="<c:url value="/board/list?page=2"/>" class="fc-blue board-list-page-num">2</a>
+						<c:forEach begin="1" end="${board.endPageNo }" varStatus="status">
+							<a href="<c:url value="/board/list?page=${status.index }"/>" class="fc-blue board-list-page-num<c:if test="${pageNum == status.index}">-on</c:if>">${status.index}</a>
+						</c:forEach>
 					</div>
 
 					<c:set var="number" value="7"/>

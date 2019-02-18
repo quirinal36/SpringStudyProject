@@ -38,7 +38,7 @@
 			board.title like '%${search}%'
 			</if>
 			order by board.id desc
-			limit ${from}, ${to}
+			limit ${from}, ${to-from}
 		</where>
 	</select>
 	

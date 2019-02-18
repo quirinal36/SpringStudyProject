@@ -1,7 +1,6 @@
 package you.bacoder.kr.control;
 
 import java.io.IOException;
-import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,7 +19,6 @@ import you.bacoder.kr.vo.UserVO;
 
 @Controller
 public class BoardController extends BacoderController {
-	
 	/**
 	 * 게시판 리스트뷰
 	 * @param mv
@@ -32,24 +30,27 @@ public class BoardController extends BacoderController {
 			@RequestParam(value="search", required=false)String search,
 			 @RequestParam(value="page", required=false)Optional<Integer> pageNum
 			 ) {
-		logger.info("pageNum : " + pageNum);
-		
 		List<Board> list = boardService.select();
+		
 		if(list.size() > 0) {
-			Board board = new Board();
-			board.setTotal(list.size());
+			Board board;
+			if(pageNum.isPresent()) {
+				board = new Board(list.size(), pageNum.get());	
+			}else {
+				board = new Board(list.size(), 1);
+			}
+			
 			board.setSearch(search);
 			mv.addObject("board", board);
-			if(pageNum.isPresent()) {
-				board.setPageNum(pageNum.get());
-			}else {
-				board.setPageNum(1);
-			}
+			mv.addObject("pageNum", board.getPageNo());
+			
+			logger.info(board.toString());
+			
 			list.clear();
 			list = boardService.select(board);
-			logger.info(board.toString());
+			
+			mv.addObject("board", board);
 		}
-		
 		mv.addObject("list", list);
 		mv.setViewName("/board/list");
 		return mv;
@@ -112,14 +113,17 @@ public class BoardController extends BacoderController {
 		json.put("result", result);
 		response.getWriter().append(json.toString());
 	}
-	@RequestMapping(value="/board/deleteBoard", method=RequestMethod.GET)
-	public void deleteBoard(Board board, HttpServletResponse response,
+	@RequestMapping(value="/board/deleteBoard", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView deleteBoard(ModelAndView mv, Board board, HttpServletResponse response,
 			HttpServletRequest request) throws IOException {
 		int result = boardService.delete(board);
 		
 		JSONObject json = new JSONObject();
 		json.put("result", result);
 		response.getWriter().append(json.toString());
+		
+		mv.setViewName("redirect:/board");
+		return mv;
 	}
 	
 	/**
@@ -130,8 +134,26 @@ public class BoardController extends BacoderController {
 	 * @return
 	 */
 	@RequestMapping(value="/board/detail", method=RequestMethod.GET)
-	public ModelAndView getDetailView(ModelAndView mv, @RequestParam(value="id")Integer id) {
+	public ModelAndView getDetailView(ModelAndView mv, @RequestParam(value="id")Integer id,
+			HttpServletRequest request) {
 		Board board = boardService.selectOne(new Board(id));
+		final String deleteDir = new StringBuilder()
+				.append(getWebappDir(request))
+				.append("/")
+				.append("board")
+				.append("/")
+				.append("deleteBoard")
+				.toString();
+		final String updateDir = new StringBuilder()
+				.append(getWebappDir(request))
+				.append("/")
+				.append("board")
+				.append("/")
+				.append("update")
+				.toString(); 
+		
+		mv.addObject("deleteDir", deleteDir);
+		mv.addObject("updateDir", updateDir);
 		mv.addObject("board", board);
 		mv.setViewName("/board/detail");
 		return mv;

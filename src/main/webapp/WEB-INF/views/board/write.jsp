@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="baseUrl" value="${pageContext.request.contextPath}"></c:set>
 <!doctype html>
 <html>
 <head>
@@ -11,13 +12,25 @@
 	
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script type="text/javascript">
+	function ConvertSystemSourcetoHtml(str){
+		 str = str.replace(/</g,"&lt;");
+		 str = str.replace(/>/g,"&gt;");
+		 str = str.replace(/\"/g,"&quot;");
+		 str = str.replace(/\'/g,"&#39;");
+		 str = str.replace(/\n/g,"<br />");
+		 console.log(str);
+		 return str;
+	}
 	function insertBoard(){
+		var body = ConvertSystemSourcetoHtml($("textarea").val());
+		$("textarea").val(body);
+		
 		if(confirm("저장하시겠습니까?")){
 			$("form").submit();
 		}
 	}
-	function openFileUpload(){
-		var child = window.open("/photo_upload",
+	function openFileUpload(homeUrl){
+		var child = window.open(homeUrl+"/photo_upload",
 				"mywindow","menubar=1,resizable=1,width=380,height=250");
 	}
 	</script>
@@ -27,7 +40,7 @@
 		<c:import url="/inc/header"></c:import>
 		<div class="container_wrap">
 			<div class="container">
-				<form id="write" action="/board/insertBoard">
+				<form id="write" action="${baseUrl}/board/insertBoard">
 					<table>
 						<thead>
 							<tr>
@@ -44,8 +57,8 @@
 							<tr>
 								<td>사진업로드</td>
 								<td>
-									<input type="button" onclick="openFileUpload();" value="사진올리기"/>	
-									<input type="hidden" id="targetUpload" name="photoUrl"/>							
+									<input type="button" onclick="openFileUpload('${baseUrl}');" value="사진올리기"/>	
+									<input type="hidden" id="targetUpload" name="photoUrl"/>
 								</td>
 							<tr>
 								<td colspan="2">

@@ -1,13 +1,11 @@
 package you.bacoder.kr.vo;
 
 import java.sql.Date;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-public class Board{
+public class Board extends Paging{
 	private String search;
 	
 	private int id;
@@ -16,19 +14,18 @@ public class Board{
 	private Date wdate;
 	private int writer;
 	private String username;
-	private int pageNum;
-	private int from;
-	private int to;
-	private int total;
 	private String photoUrl;
 	
-	public Board() {
-	}
+	public Board() {}
 	
 	public Board(int id) {
 		this.id = id;
 	}
 	
+	public Board(int totalCount, int pageNo) {
+		super(totalCount, pageNo);
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -81,42 +78,6 @@ public class Board{
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-	public int getPageNum() {
-		return pageNum;
-	}
-
-	public void setPageNum(int pageNum) {
-		this.pageNum = pageNum;
-		this.from=10*(pageNum-1);
-		this.to=(pageNum*10);
-		if(this.to> total){
-			this.to=total;
-		}
-	}
-	public int getFrom() {
-		return from;
-	}
-
-	public void setFrom(int from) {
-		this.from = from;
-	}
-
-	public int getTo() {
-		return to;
-	}
-
-	public void setTo(int to) {
-		this.to = to;
-	}
-
-	public int getTotal() {
-		return total;
-	}
-
-	public void setTotal(int total) {
-		this.total = total;
-		
 	}
 	
 	public String getPhotoUrl() {
