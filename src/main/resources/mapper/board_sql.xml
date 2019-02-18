@@ -41,23 +41,23 @@
 			user.username AS username,
 			board.photoUrl
 		from Board board left join users user on board.writer = user.id
-		<where>
-			<if test="search != null and search != ''">
+		<if test="search != null and search != ''">
+			<where>
 				and
 				user.username like '%${search}%'
 				or
 				board.title like '%${search}%'
-			</if>
-			<choose>
-				<when test="orderById == 0">
-				order by board.id desc
-				</when>
-				<otherwise>
-				order by board.id asc
-				</otherwise>
-			</choose> 
-			limit ${from}, ${to-from}
-		</where>
+			</where>
+		</if>
+		<choose>
+			<when test="orderById == 0">
+			order by board.id desc
+			</when>
+			<otherwise>
+			order by board.id asc
+			</otherwise>
+		</choose> 
+		limit ${from}, ${to-from}
 	</select>
 	
 	<select id="select_one" parameterType="board" resultType="board">

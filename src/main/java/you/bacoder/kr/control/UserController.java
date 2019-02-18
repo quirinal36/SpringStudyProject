@@ -70,4 +70,9 @@ public class UserController extends BacoderController {
 		mv.setViewName("/sign/login");
 		return mv;
 	}
+	
+	@RequestMapping(value= {"/sign/update"}, method= {RequestMethod.GET})
+	public ModelAndView getUpdateView(ModelAndView mv) {
+		return mv;
+	}
 }
