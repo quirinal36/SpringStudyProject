@@ -60,7 +60,9 @@
 			<choose>
 				<when test="username != null and username!= ''">
 				username = '${username}',
-				password = '${password}'
+				</when>
+				<when test="password != null and password != ''">
+				password = '${password}',
 				</when>
 				<otherwise>
 				user_role = ${user_role}
