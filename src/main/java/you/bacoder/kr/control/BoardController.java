@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import you.bacoder.kr.vo.Board;
 import you.bacoder.kr.vo.UserVO;
@@ -105,13 +106,18 @@ public class BoardController extends BacoderController {
 	 * @throws IOException
 	 */
 	@RequestMapping(value="/board/updateBoard", method=RequestMethod.GET)
-	public void updateBoard(Board board, HttpServletResponse response,
-			HttpServletRequest request) throws IOException {
+	public ModelAndView updateBoard(Board board, HttpServletResponse response,
+			HttpServletRequest request, ModelAndView mv, RedirectAttributes attr) throws IOException {
 		int result = boardService.update(board);
 		
 		JSONObject json = new JSONObject();
 		json.put("result", result);
 		response.getWriter().append(json.toString());
+		
+		attr.addAttribute("id", board.getId());
+		
+		mv.setViewName("redirect:/board/detail");
+		return mv;
 	}
 	@RequestMapping(value="/board/deleteBoard", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView deleteBoard(ModelAndView mv, Board board, HttpServletResponse response,
@@ -142,7 +148,7 @@ public class BoardController extends BacoderController {
 		}
 		
 		Board board = boardService.selectOne(new Board(id));
-		
+		logger.info(board.toString());
 		final String deleteDir = new StringBuilder()
 				.append(getWebappDir(request))
 				.append("/")

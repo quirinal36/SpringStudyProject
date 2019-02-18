@@ -12,12 +12,7 @@
 	
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script type="text/javascript">
-	const toast = Swal.mixin({
-		  toast: true,
-		  position: 'top-end',
-		  showConfirmButton: false,
-		  timer: 3000
-		});
+	
 	function formSubmit(){
 		var pwd = $("input[name='password']").val();
 		var pwd_confirm = $("input[name='password_confirm']").val();
