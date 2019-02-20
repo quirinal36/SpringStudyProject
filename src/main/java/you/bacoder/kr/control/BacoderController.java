@@ -12,6 +12,7 @@ import org.springframework.context.ApplicationContext;
 
 import you.bacoder.kr.security.AuthenticationFacade;
 import you.bacoder.kr.service.BoardService;
+import you.bacoder.kr.service.BookService;
 import you.bacoder.kr.service.UserService;
 import you.bacoder.kr.vo.UserVO;
 
@@ -26,6 +27,9 @@ public class BacoderController {
 	
 	@Resource(name="userService")
 	protected UserService userService;
+	
+	@Resource(name="bookService")
+	protected BookService bookService;
 	
 	@Autowired
 	protected AuthenticationFacade authenticationFacade;

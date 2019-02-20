@@ -8,6 +8,8 @@
 		<title>${board.title }</title>
 		<link rel="stylesheet" type="text/css" href="http://www.bacoder.kr/webpr/css/style.css" />
 		<link rel="stylesheet" type="text/css" media="all" href="http://www.bacoder.kr/webpr/css/table.css">
+		
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script type="text/javascript">
 		function deleteBoard(url, id){
 			if(confirm("삭제 하시겠습니까?")){
