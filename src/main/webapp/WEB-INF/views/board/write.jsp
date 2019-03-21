@@ -18,7 +18,6 @@
 		 str = str.replace(/\"/g,"&quot;");
 		 str = str.replace(/\'/g,"&#39;");
 		 str = str.replace(/\n/g,"<br />");
-		 console.log(str);
 		 return str;
 	}
 	function insertBoard(){

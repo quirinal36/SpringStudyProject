@@ -143,7 +143,7 @@ public class BoardController extends BacoderController {
 	public ModelAndView getDetailView(ModelAndView mv, @RequestParam(value="id")Integer id,
 			HttpServletRequest request) {
 		UserVO user = getUser();
-		if(user.getId() > 0) {
+		if(user!=null && user.getId() > 0) {
 			mv.addObject("user", user);
 		}
 		
