@@ -71,7 +71,7 @@ h1{color:#333;font-size:14px;letter-spacing:-1px}
 		<div id="pop_footer">
 		    <div class="btn_area">
 	            <a href="javascript:fn_imageUp();"><img src="<c:url value="/resources/img/photoQuickPopup/btn_confirm.png"/>" width="49" height="28" alt="확인" id="btn_confirm"></a>
-	            <a href="window.close();"><img src="<c:url value="/resources/img/photoQuickPopup/btn_cancel.png"/>" width="48" height="28" alt="취소" id="btn_cancel"></a>
+	            <a href="javascript:window.close();"><img src="<c:url value="/resources/img/photoQuickPopup/btn_cancel.png"/>" width="48" height="28" alt="취소" id="btn_cancel"></a>
 	        </div>
     	</div>
         <!-- //content -->

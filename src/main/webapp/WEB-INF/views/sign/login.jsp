@@ -17,7 +17,7 @@
 					<dd><input type="text" name="loginid" value="${loginid }" required placeholder="아이디를 입력하세요."/></dd>
 				</dl>
 				<dl>
-					<dd><input type="password" name="loginpwd" 	placeholder="비밀번호를 입력하세요." required 
+					<dd><input type="password" name="loginpwd" 	placeholder="비밀번호를 입력하세요."  
 								value="${loginpwd }"/></dd>
 				</dl>
 				<c:if test="${not empty securityexceptionmsg }">

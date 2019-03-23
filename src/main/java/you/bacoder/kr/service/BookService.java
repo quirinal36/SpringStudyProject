@@ -15,8 +15,7 @@ public class BookService implements DataService<BookVO> {
 	
 	@Override
 	public int insert(BookVO input) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.insert(input);
 	}
 
 	@Override
@@ -27,8 +26,7 @@ public class BookService implements DataService<BookVO> {
 
 	@Override
 	public int delete(BookVO input) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.delete(input);
 	}
 
 	@Override
