@@ -13,4 +13,18 @@
 		where 
 		id = ${id}
 	</select>
+	
+	<update id="update" parameterType="book">
+	update Book
+	set
+		title = '${title}'
+	where
+		id = ${id}
+	</update>
+	
+	<select id="count">
+		select
+			count(*)
+		from Book
+	</select>
 </mapper>

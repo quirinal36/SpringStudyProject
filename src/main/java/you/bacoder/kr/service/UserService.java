@@ -21,12 +21,17 @@ public class UserService implements DataService<UserVO> {
 	@Override
 	public int insert(UserVO input) {
 		input.setUser_role(2); // ROLE_USER 부여함
+		//1111
 		input.setPassword(passwordEncoder.encode(input.getPassword()));
+		
 		return dao.insert(input);
 	}
 
 	@Override
 	public int update(UserVO input) {
+		
+		boolean result = passwordEncoder.matches("1111", "$Onlkjh7451389");
+		
 		if(input.getPassword() !=null && input.getPassword().length()>0) {
 			input.setPassword(passwordEncoder.encode(input.getPassword()));
 		}

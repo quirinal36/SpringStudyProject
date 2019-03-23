@@ -11,6 +11,16 @@
 	<link rel="stylesheet" type="text/css" href="http://www.bacoder.kr/webpr/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/board.css"/>" />
 	<script src="<c:url value="/resources/js/board.js"><c:param name="dt" value="${nowDate }"/></c:url>"></script>
+	
+	<script type="text/javascript">
+	function orderSubmit(order){
+		order = order > 0 ? 0 : 1;
+		
+		$("input[name='orderById']").val(order);
+		$("form").submit();
+	}
+	</script>
+	
 	</head>
 	<body>
 		<div class="wrap">

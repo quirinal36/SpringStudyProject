@@ -52,6 +52,7 @@
 				
 				<sec:authorize access="isAnonymous()">
 					환영합니다.
+					<sec:authentication property="principal"/>
 				</sec:authorize>
 			</div>
 		</div>
