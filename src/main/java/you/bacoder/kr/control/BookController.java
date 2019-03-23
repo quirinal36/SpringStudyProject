@@ -33,7 +33,7 @@ public class BookController extends BacoderController {
 			@RequestParam(value="id")int id,
 			HttpServletRequest request) {
 		UserVO user = getUser();
-		if(user.getId() > 0) {
+		if(user!=null && user.getId() > 0) {
 			mv.addObject("user", user);
 		}
 		final String deleteDir = new StringBuilder()
@@ -67,7 +67,7 @@ public class BookController extends BacoderController {
 	public ModelAndView getUpdateView(ModelAndView mv,
 			@RequestParam(value="id")int id) {
 		UserVO user = getUser();
-		if(user.getId() > 0) {
+		if(user!=null && user.getId() > 0) {
 			mv.addObject("user", user);
 		}
 		
