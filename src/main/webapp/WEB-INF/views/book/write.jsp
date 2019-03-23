@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>form action</title>
+	<title>도서 작성</title>
 	
 	<link rel="stylesheet" type="text/css" href="http://www.bacoder.kr/webpr/css/style.css" />
 	<link href="http://www.bacoder.kr/webpr/css/table.css" rel="stylesheet" type="text/css" media="all">
@@ -18,11 +18,12 @@
 		 str = str.replace(/\"/g,"&quot;");
 		 str = str.replace(/\'/g,"&#39;");
 		 str = str.replace(/\n/g,"<br />");
+		 console.log(str);
 		 return str;
 	}
-	function insertBoard(){
-		var body = ConvertSystemSourcetoHtml($("textarea").val());
-		$("textarea").val(body);
+	function insertBook(){
+		//var body = ConvertSystemSourcetoHtml($("textarea").val());
+		//$("textarea").val(body);
 		
 		if(confirm("저장하시겠습니까?")){
 			$("form").submit();
@@ -39,35 +40,43 @@
 		<c:import url="/inc/header"></c:import>
 		<div class="container_wrap">
 			<div class="container">
-				<form id="write" action="${baseUrl}/board/insertBoard">
+				<form id="write" action="${baseUrl}/book/insertBook">
 					<table>
 						<thead>
 							<tr>
-								<th>
-									<input name="title" placeholder="제목을 입력해 주세요."/>
-								</th>
-								<th>
-									<input name="" placeholder="작성자" value="${user.username }" readonly>
-									<input type="hidden" name="writer" value="${user.id}" /> 
-								</th>
+								<th colspan="2">도서정보 입력하기</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td>사진업로드</td>
-								<td>
+								<td>제목</td>
+								<th>
+									<input name="title" placeholder="제목을 입력해 주세요."/>
+								</th>
+							</tr>
+							<tr>
+								<td>글쓴이
+								</td>
+								<th>
+									<input name="writer" placeholder="작성자" type="text"/>
+								</th>
+							</tr>
+							<tr>
+								<td>가격</td>
+								<td><input type="text" name="price" placeholder="가격"/></td>
+							</tr>
+							<tr>
+								
+							
+								<td colspan="2">
 									<input type="button" onclick="openFileUpload('${baseUrl}');" value="사진올리기"/>	
 									<input type="hidden" id="targetUpload" name="photoUrl"/>
 									<img src="" id="temp_src" width="300"/>
 								</td>
-							<tr>
-								<td colspan="2">
-									<textarea rows="20" cols="100" name="content" placeholder="내용입력"></textarea>
-								</td>
 							</tr>
 						</tbody>
 					</table>
-					<input type="button" value="글작성" onclick="javascript:insertBoard();">
+					<input type="button" value="글작성" onclick="javascript:insertBook();">
 				</form>
 			</div>
 		</div>

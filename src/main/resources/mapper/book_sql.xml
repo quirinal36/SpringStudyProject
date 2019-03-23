@@ -27,4 +27,16 @@
 			count(*)
 		from Book
 	</select>
+
+	<delete id="delete" parameterType="book">
+		DELETE from Book
+		where id = ${id}
+	</delete>
+	
+	<insert id="insert" parameterType="book">
+		insert into Book 
+		(title, writer, price, photoUrl)
+		values
+		('${title}', '${writer}', ${price}, '${photoUrl}')
+	</insert>
 </mapper>

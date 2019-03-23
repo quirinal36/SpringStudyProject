@@ -17,8 +17,7 @@ public class BookDAO implements DataAccess<BookVO>{
 	
 	@Override
 	public int insert(BookVO input) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert(namespace +".insert", input);
 	}
 
 	@Override
@@ -29,8 +28,7 @@ public class BookDAO implements DataAccess<BookVO>{
 
 	@Override
 	public int delete(BookVO input) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete(namespace +".delete", input);
 	}
 
 	@Override
